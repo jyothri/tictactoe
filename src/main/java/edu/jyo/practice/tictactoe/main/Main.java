@@ -12,10 +12,15 @@ public class Main {
         Board board = new Board(GameConstants.dimension);
         AIPlayer aiPlayer = new AiPlayerV2(board);
 
-//        GamePlayer consolePlay = new ConsolePlayer(board, aiPlayer);
-//        consolePlay.play();
+        if (args == null || args.length == 0) {
+            GameEngine uiPlayer = new UiGameEngine(board, aiPlayer);
+            uiPlayer.play();
+            return;
+        }
 
-        GameEngine uiPlayer = new UiGameEngine(board, aiPlayer);
-        uiPlayer.play();
+        if (args[0].equals("console")) {
+            GameEngine consolePlay = new ConsoleGameEngine(board, aiPlayer);
+            consolePlay.play();
+        }
     }
 }
