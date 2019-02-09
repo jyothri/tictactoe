@@ -9,9 +9,9 @@ import com.interviewbyte.interview.tictactoe.exception.NoMoreMovesException;
  * Makes a move. Mark the first possible occurrence.
  */
 public class AiPlayerV1 implements AIPlayer {
-    final Board board;
-    final int dim;
-    final BoardCellState[][] matrix;
+    private final Board board;
+    private final int dim;
+    private final BoardCellState[][] matrix;
 
     public AiPlayerV1(Board board) {
         this.board = board;
@@ -33,7 +33,7 @@ public class AiPlayerV1 implements AIPlayer {
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
                 if (matrix[i][j] == BoardCellState.BLANK) {
-                    board.addToken(i, j, "O");
+                    board.addToken(i, j, BoardCellState.O);
                     return;
                 }
             }

@@ -96,7 +96,7 @@ public class AiPlayerV2 implements AIPlayer {
 
         int center = dim / 2;
         if (matrix[center][center] == BLANK) {
-            board.addToken(center, center, "O");
+            board.addToken(center, center, BoardCellState.O);
             return;
         }
 
@@ -107,7 +107,7 @@ public class AiPlayerV2 implements AIPlayer {
         for (int j = 0; j < dim; j++) {
             int offset = isForward ? j : dim - 1 - j;
             if (matrix[j][offset] == BLANK) {
-                board.addToken(j, offset, "O");
+                board.addToken(j, offset, BoardCellState.O);
                 break;
             }
         }
@@ -118,9 +118,9 @@ public class AiPlayerV2 implements AIPlayer {
             BoardCellState cell = isRow ? matrix[i][j] : matrix[j][i];
             if (cell == BLANK) {
                 if (isRow) {
-                    board.addToken(i, j, "O");
+                    board.addToken(i, j, BoardCellState.O);
                 } else {
-                    board.addToken(j, i, "O");
+                    board.addToken(j, i, BoardCellState.O);
                 }
 
                 break;

@@ -40,7 +40,7 @@ public class Board {
         System.out.println();
     }
 
-    public void addToken(int row, int column, String token) {
+    public void addToken(int row, int column, BoardCellState token) {
         if (state != GameState.PLAYING) {
             throw new InvalidMarkingException(String.format("Not playing anymore " +
                     "Game state= %s", state));
@@ -55,19 +55,15 @@ public class Board {
             throw new InvalidMarkingException(String.format("Position [%d, %d] " +
                     "already marked. Cannot perform again", row, column));
         }
-        BoardCellState player = BoardCellState.BLANK;
         switch (token) {
-            case "X":
-                player = BoardCellState.X;
-                break;
-            case "O":
-                player = BoardCellState.O;
+            case O:
+            case X:
                 break;
             default:
                 throw new InvalidMarkingException("Invalid Player. Should be either X or O");
         }
-        matrix[row][column] = player;
-        determineWinner(row, column, player);
+        matrix[row][column] = token;
+        determineWinner(row, column, token);
     }
 
     public GameState getState() {

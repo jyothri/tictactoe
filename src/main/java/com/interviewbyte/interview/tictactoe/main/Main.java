@@ -3,6 +3,7 @@ package com.interviewbyte.interview.tictactoe.main;
 import com.interviewbyte.interview.tictactoe.ai.AIPlayer;
 import com.interviewbyte.interview.tictactoe.ai.AiPlayerV2;
 import com.interviewbyte.interview.tictactoe.domain.Board;
+import com.interviewbyte.interview.tictactoe.domain.BoardCellState;
 import com.interviewbyte.interview.tictactoe.domain.GameConstants;
 import com.interviewbyte.interview.tictactoe.domain.GameState;
 import com.interviewbyte.interview.tictactoe.exception.InvalidMarkingException;
@@ -27,7 +28,7 @@ public class Main {
                     try {
                         int row = in.nextInt();
                         int col = in.nextInt();
-                        board.addToken(row - 1, col - 1, "X");
+                        board.addToken(row - 1, col - 1, BoardCellState.X);
                         board.printBoard();
                         playerMove = false;
                     } catch (InvalidMarkingException | InputMismatchException | ArrayIndexOutOfBoundsException ime) {
