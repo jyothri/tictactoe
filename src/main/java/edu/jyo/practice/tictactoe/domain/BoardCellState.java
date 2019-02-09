@@ -1,4 +1,4 @@
-package com.interviewbyte.interview.tictactoe.domain;
+package edu.jyo.practice.tictactoe.domain;
 
 public enum BoardCellState {
     BLANK("blank", "-", 0),

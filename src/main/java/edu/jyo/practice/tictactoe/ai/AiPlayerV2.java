@@ -1,11 +1,11 @@
-package com.interviewbyte.interview.tictactoe.ai;
+package edu.jyo.practice.tictactoe.ai;
 
-import com.interviewbyte.interview.tictactoe.domain.Board;
-import com.interviewbyte.interview.tictactoe.domain.BoardCellState;
-import com.interviewbyte.interview.tictactoe.domain.GameState;
-import com.interviewbyte.interview.tictactoe.exception.NoMoreMovesException;
+import edu.jyo.practice.tictactoe.domain.Board;
+import edu.jyo.practice.tictactoe.domain.BoardCellState;
+import edu.jyo.practice.tictactoe.domain.GameState;
+import edu.jyo.practice.tictactoe.exception.NoMoreMovesException;
 
-import static com.interviewbyte.interview.tictactoe.domain.BoardCellState.BLANK;
+import static edu.jyo.practice.tictactoe.domain.BoardCellState.BLANK;
 
 /**
  * Makes a move. Mark the first possible occurrence.

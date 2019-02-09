@@ -1,4 +1,4 @@
-package com.interviewbyte.interview.tictactoe.exception;
+package edu.jyo.practice.tictactoe.exception;
 
 public class InvalidMarkingException extends RuntimeException {
 

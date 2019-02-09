@@ -1,20 +1,20 @@
-package com.interviewbyte.interview.tictactoe.main;
+package edu.jyo.practice.tictactoe.main;
 
-import com.interviewbyte.interview.tictactoe.ai.AIPlayer;
-import com.interviewbyte.interview.tictactoe.domain.Board;
-import com.interviewbyte.interview.tictactoe.domain.BoardCellState;
-import com.interviewbyte.interview.tictactoe.domain.GameState;
-import com.interviewbyte.interview.tictactoe.exception.InvalidMarkingException;
+import edu.jyo.practice.tictactoe.ai.AIPlayer;
+import edu.jyo.practice.tictactoe.domain.Board;
+import edu.jyo.practice.tictactoe.domain.BoardCellState;
+import edu.jyo.practice.tictactoe.domain.GameState;
+import edu.jyo.practice.tictactoe.exception.InvalidMarkingException;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class ConsolePlayer implements GamePlayer {
+public class ConsoleGameEngine implements GameEngine {
 
     private final Board board;
     private final AIPlayer aiPlayer;
 
-    public ConsolePlayer(Board board, AIPlayer aiPlayer) {
+    public ConsoleGameEngine(Board board, AIPlayer aiPlayer) {
         this.board = board;
         this.aiPlayer = aiPlayer;
     }

@@ -1,6 +1,6 @@
-package com.interviewbyte.interview.tictactoe.domain;
+package edu.jyo.practice.tictactoe.domain;
 
-import com.interviewbyte.interview.tictactoe.exception.InvalidMarkingException;
+import edu.jyo.practice.tictactoe.exception.InvalidMarkingException;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
