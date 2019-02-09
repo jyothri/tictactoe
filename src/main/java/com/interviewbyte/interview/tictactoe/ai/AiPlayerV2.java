@@ -28,7 +28,7 @@ public class AiPlayerV2 implements AIPlayer {
      * 3. Delegate to v1 AI
      */
     @Override
-    public void makeMove() {
+    public int[] suggestMove() {
         if (board.getState() != GameState.PLAYING) {
             throw new NoMoreMovesException("AI Cannot make a move. We are not playing anymore");
         }
@@ -41,8 +41,7 @@ public class AiPlayerV2 implements AIPlayer {
         for (int i = 0; i < dim; i++) {
             int count = getLineCount(i, true);
             if (count == 2) {
-                markInLine(i, true);
-                return;
+                return markInLine(i, true);
             }
 
             if (count == -2) {
@@ -52,8 +51,7 @@ public class AiPlayerV2 implements AIPlayer {
 
             count = getLineCount(i, false);
             if (count == 2) {
-                markInLine(i, false);
-                return;
+                return markInLine(i, false);
             }
 
             if (count == -2) {
@@ -64,68 +62,60 @@ public class AiPlayerV2 implements AIPlayer {
 
         int forwardDiagCount = getDiagonalCount(true);
         if (forwardDiagCount == dim - 1) {
-            markInDiag(true);
-            return;
+            return markInDiag(true);
         }
 
         int backwardDiagCount = getDiagonalCount(false);
         if (backwardDiagCount == dim - 1) {
-            markInDiag(false);
-            return;
+            return markInDiag(false);
         }
 
         if (Math.abs(forwardDiagCount) == dim - 1) {
-            markInDiag(true);
-            return;
+            return markInDiag(true);
         }
 
         if (Math.abs(backwardDiagCount) == dim - 1) {
-            markInDiag(false);
-            return;
+            return markInDiag(false);
         }
 
         if (canLoseRow) {
-            markInLine(row, true);
-            return;
+            return markInLine(row, true);
         }
 
         if (canLoseCol) {
-            markInLine(col, false);
-            return;
+            return markInLine(col, false);
         }
 
         int center = dim / 2;
         if (matrix[center][center] == BLANK) {
-            board.addToken(center, center, BoardCellState.O);
-            return;
+            return new int[]{center, center};
         }
 
-        new AiPlayerV1(board).makeMove();
+        return new AiPlayerV1(board).suggestMove();
     }
 
-    private void markInDiag(boolean isForward) {
+    private int[] markInDiag(boolean isForward) {
         for (int j = 0; j < dim; j++) {
             int offset = isForward ? j : dim - 1 - j;
             if (matrix[j][offset] == BLANK) {
-                board.addToken(j, offset, BoardCellState.O);
-                break;
+                return new int[]{j, offset};
             }
         }
+        throw new IllegalStateException("Should never happen");
     }
 
-    private void markInLine(int i, boolean isRow) {
+    private int[] markInLine(int i, boolean isRow) {
         for (int j = 0; j < dim; j++) {
             BoardCellState cell = isRow ? matrix[i][j] : matrix[j][i];
             if (cell == BLANK) {
                 if (isRow) {
-                    board.addToken(i, j, BoardCellState.O);
+                    return new int[]{i, j};
                 } else {
-                    board.addToken(j, i, BoardCellState.O);
+                    return new int[]{j, i};
                 }
-
-                break;
             }
         }
+        throw new IllegalStateException("Should never happen");
     }
 
     private int getLineCount(int line, boolean isRow) {
