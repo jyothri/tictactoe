@@ -11,5 +11,5 @@
 - mvn is used but there are no external dependencies.
 
 - Steps to execute
-    - For UI: `mvn exec:java -Dexec.mainClass="edu.jyo.practice.tictactoe.main.Main" -Dexec.args="console"`
+    - For UI: `mvn exec:java -Dexec.mainClass="edu.jyo.practice.tictactoe.main.Main"`
     - For console only: `mvn exec:java -Dexec.mainClass="edu.jyo.practice.tictactoe.main.Main" -Dexec.args="console"`
